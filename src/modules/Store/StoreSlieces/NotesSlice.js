@@ -72,7 +72,7 @@ export const NotesSlice = createSlice({
     removeNote (state, props) {
       let activeApp = props.payload.activeApp
       let noteId = props.payload.noteId
-      console.log(activeApp)
+      
 
     },
     addNote(state,noteObject) {

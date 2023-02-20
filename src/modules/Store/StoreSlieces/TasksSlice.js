@@ -58,10 +58,42 @@ export const TasksSlice = createSlice({
          } 
          return taskApp;
        })
+    }, 
+    completedTask (state, taskObject) {
+      let taskId = taskObject.payload.taskId;
+      let activeProject = taskObject.payload.activeProject;
+
+      state.taskApps = state.taskApps.map((taskApp) => {
+        if (taskApp.appId === activeProject) {
+          taskApp.tasks.map( task => {
+            if(task.id === taskId) {
+              task.completed = !task.completed
+            }
+          })
+        }
+        return taskApp;
+      });
+    },
+    editTaskInApp (state, taskObject) {
+      let title = taskObject.payload.title;
+      let taskId = taskObject.payload.taskId;
+      let activeProject = taskObject.payload.activeProject;
+
+      state.taskApps = state.taskApps.map((taskApp) => {
+        if (taskApp.appId === activeProject) {
+          taskApp.tasks.map((task) => {
+            if (task.id === taskId) {
+              task.title = title
+            }
+          });
+        }
+        return taskApp;
+      });
     }
   },
 });
 
-export const { addTask, removeTask } = TasksSlice.actions;
+export const { addTask, removeTask, completedTask, editTaskInApp } =
+  TasksSlice.actions;
 
 export default TasksSlice.reducer;
