@@ -7,8 +7,9 @@ export default function AddTask({activeProject}) {
   const dispatch = useDispatch()
 
   function addTaskEvent (e) {
-    if(e.code === 'NumpadEnter' && e.target.value.trim()) {
+    if(e.code === 'Enter' && e.target.value.trim()) {
       dispatch(addTask({ task: e.target.value, activeProject: activeProject }));
+      e.target.value = ''
     }
   }
   return (

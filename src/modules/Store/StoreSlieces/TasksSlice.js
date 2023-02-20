@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   taskApps: [
@@ -36,21 +36,32 @@ export const TasksSlice = createSlice({
     addTask (state, taskObject) {
       let task = taskObject.payload.task
       let activeProject = taskObject.payload.activeProject
-      state.taskApps = state.taskApps.map( taskApp => {
-          console.log(taskApp);
 
+      state.taskApps = state.taskApps.map( taskApp => {
         if(taskApp.appId === activeProject) {
-          return taskApp.tasks.push({
+          taskApp.tasks.push({
             id: Date.now(),
             title: task,
             completed: false,
           })
-        } else return taskApp
+        } 
+        return taskApp
       })
+    },
+    removeTask(state, taskObject) {
+      let taskId = taskObject.payload.taskId
+      let activeProject = taskObject.payload.activeProject
+
+       state.taskApps = state.taskApps.map((taskApp) => {
+         if (taskApp.appId === activeProject) {
+            taskApp.tasks = taskApp.tasks.filter((task) => task.id !== taskId)
+         } 
+         return taskApp;
+       })
     }
   },
 });
 
-export const { addTask } = TasksSlice.actions;
+export const { addTask, removeTask } = TasksSlice.actions;
 
 export default TasksSlice.reducer;
