@@ -8,7 +8,8 @@ export default function AddNote({activeProject}) {
 
   function addNoteEvent(e) {
     if (e.code === "NumpadEnter") {
-      dispath(addNote({ note: e.target.value, activeProject: activeProject }));
+      e.preventDefault()
+      dispath(addNote({note: e.target.value}));
     }
   }
   return (
