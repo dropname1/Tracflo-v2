@@ -33,6 +33,12 @@ export const TasksSlice = createSlice({
   name: "TasksSlice",
   initialState,
   reducers: {
+    createTaskApp (state, projectAndAppId) {
+      state.taskApps.push({
+      appId: projectAndAppId.payload,
+      tasks: []
+      })
+    },
     addTask (state, taskObject) {
       let task = taskObject.payload.task
       let activeProject = taskObject.payload.activeProject
@@ -93,7 +99,7 @@ export const TasksSlice = createSlice({
   },
 });
 
-export const { addTask, removeTask, completedTask, editTaskInApp } =
+export const { addTask, removeTask, completedTask, editTaskInApp, createTaskApp } =
   TasksSlice.actions;
 
 export default TasksSlice.reducer;

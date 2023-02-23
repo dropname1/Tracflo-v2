@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  trash: [
+  trashApps: [
     {
       id: 1,
       objectType: "Task",
@@ -23,7 +23,11 @@ const initialState = {
 export const TrashSlice = createSlice({
   name: "TrashSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    addTrashApp(state) {
+
+    }
+  },
 });
 
 export const {} = TrashSlice.actions;

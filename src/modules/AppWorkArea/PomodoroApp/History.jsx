@@ -4,20 +4,35 @@ import WorkItem from './PomodoroHistoryItems/PomoWorkTime'
 import {useSelector} from 'react-redux'
 
 export default function History() {
-  const pomodoroItems = useSelector((state) => state.PomodoroSlice.pomodoroItems);
+  const pomodoroApps = useSelector((state) => state.PomodoroSlice.pomodoroApps);
+  const activeProject = useSelector((state) => state.ProjectSlice.activeProjectId.payload);
+
+  function pomodoroApp() {
+    return pomodoroApps.map((pomodoroApp) => {
+      if (pomodoroApp.appId === activeProject) {
+        return pomodoroItem(pomodoroApp);
+      }
+    });
+  }
+
+  function pomodoroItem(pomodoroApp) {
+    console.log(pomodoroApp)
+    return pomodoroApp.pomodoroItems.map((item) => {
+      if (item.type === "Pomadoro") {
+        return <WorkItem pomo={item} key={item.id} />;
+      }
+      if (item.type === "Relaxation") {
+        return <RelaxationItem pomo={item} key={item.id} />;
+      }
+    });
+  }
+  
   return (
-    <div className='historyWrapper'>
-    <div className="historyTitle">History</div>
-    <div className="historyItemsWrapper">
-        {pomodoroItems && pomodoroItems.map(pomo => {
-          if (pomo.type === 'Pomadoro') {
-            return <WorkItem pomo={pomo} key={pomo.id}/>
-          } 
-          if (pomo.type === "Relaxation") {
-            return <RelaxationItem pomo={pomo} key={pomo.id} />;
-          }
-        })}
+    <div className="historyWrapper">
+      <div className="historyTitle">History</div>
+      <div className="historyItemsWrapper">{pomodoroApps && pomodoroApp()}</div>
     </div>
-    </div>
-  )
+  );
 }
+
+

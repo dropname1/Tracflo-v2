@@ -73,14 +73,38 @@ const initialState = {
 };
 
 export const BoardSlice = createSlice({
-    name: 'BoardSlice',
-    initialState,
-    reducers: {
+  name: "BoardSlice",
+  initialState,
+  reducers: {
+    createBoardApp(state, projectAndAppsId) {
+      state.boardApps.push({
+        appId: projectAndAppsId.payload,
+        boards: [
+          {
+            id: Date.now() + 1000,
+            name: "Tasks",
+            hasAddTask: true,
+            tasks: [],
+          },
+          {
+            id: Date.now() + 2000,
+            name: "In Work",
+            tasks: [],
+          },
+          {
+            id: Date.now() + 3000,
+            name: "Done",
+            tasks: [],
+          },
+        ],
+      });
+    },
 
-    }
-})
+    
+  },
+});
 
-export const {} = BoardSlice.actions
+export const { createBoardApp } = BoardSlice.actions;
 
 export default BoardSlice.reducer
 

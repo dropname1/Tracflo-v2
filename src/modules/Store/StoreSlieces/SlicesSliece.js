@@ -70,10 +70,15 @@ export const SlicesSlice = createSlice({
   name: "SlicesSlice",
   initialState,
   reducers: {
-
+    createSliceApp (state, projectAndAppsId) {
+      state.goalApps.push({
+        appId: projectAndAppsId.payload,
+        goals: []
+      })
+    }
   }
 });
 
-export const {} = SlicesSlice.actions
+export const { createSliceApp } = SlicesSlice.actions;
 
 export default SlicesSlice.reducer

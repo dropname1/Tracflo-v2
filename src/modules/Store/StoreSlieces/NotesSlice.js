@@ -72,6 +72,12 @@ export const NotesSlice = createSlice({
   name: "NotesSlice",
   initialState,
   reducers: {
+    createNoteApp (state, projectAndAppsId) {
+      state.notesApps.push({
+        appId: projectAndAppsId.payload,
+        notes: []
+      });
+    },
     setActiveNoteApp (state,activeNoteAppId ) {
       for (let i = 0; i < state.notesApps.length; i++) {
         if (state.notesApps[i].appId === activeNoteAppId.payload) {
@@ -115,7 +121,14 @@ export const NotesSlice = createSlice({
   },
 });
 
-export const {setActiveNoteApp, selectActiveNoteApp, removeNote, addNote, editNote, expandNote } =
-  NotesSlice.actions;
+export const {
+  createNoteApp, 
+  setActiveNoteApp,
+  selectActiveNoteApp,
+  removeNote,
+  addNote,
+  editNote,
+  expandNote,
+} = NotesSlice.actions;
 
 export default NotesSlice.reducer
