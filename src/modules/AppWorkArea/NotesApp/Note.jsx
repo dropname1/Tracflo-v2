@@ -5,7 +5,8 @@ import { useEffect } from 'react'
 import { removeNote } from '../../Store/StoreSlieces/NotesSlice'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
-export default function Note({note, index}) {
+import EditNote from './EditOptionItem/EditNote'
+export default function Note({note}) {
 
   const dispatch = useDispatch()
   const activeNoteApp = useSelector(state => state.ProjectSlice.activeNoteApp.payload)
@@ -13,8 +14,8 @@ export default function Note({note, index}) {
   
   return (
     <div className="noteWrapper">
-      <img src={expand} alt="expand note" className="expandNote rotate90" />
-      <textarea className="noteText" defaultValue={note.title} />
+      <img src={expand} alt="expand note" className="expandNote" />
+      <EditNote className="noteText" note={note} />
       <img
         src={trash}
         alt="trash note"

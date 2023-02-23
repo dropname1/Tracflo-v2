@@ -27,7 +27,7 @@ export default function NotesApp() {
    
   const note = (noteApp) => {
     return noteApp.notes.map((note, index) => {
-      return <Note note={note} index={index} key={note.id} />;
+      return <Note note={note} key={note.id} />;
     });
   };
 

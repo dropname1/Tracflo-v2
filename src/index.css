@@ -280,28 +280,29 @@ background-color: #F1E9E7;
   border: 1px solid #BCBBBA;
   border-radius: 5px;
   display: flex;
-  align-items: start;
+  align-items: center;
   box-sizing:border-box;
   width: 900px;
   min-height: 46px;
   margin-bottom: 13px;
+  padding: 8px 0;
 }
 .expandNote {
   width: fit-content;
   margin: 10px 10px;
+  align-self: start;
 }
 .noteText {
   font-family: Inter;
   font-size: 16px;
-  padding: 10px 0px;
+  /* padding: 10px 0px; */
   width: 820px;
   min-width: 820px;
   max-width: 820px;
   outline: none;
   border: none;
   background-color: transparent;
-  padding-bottom: 10px;
-
+  height: 20px;
 }
 .rotate180 {
   transform: rotate(180deg);
@@ -309,6 +310,7 @@ background-color: #F1E9E7;
 .trashNote {
   padding: 15px 12px;
   margin-left: auto;
+  align-self: flex-start;
 }
 
 .noteText::-webkit-scrollbar-track {

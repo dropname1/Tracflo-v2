@@ -1,0 +1,28 @@
+.EditableText {
+  width: 820px;
+  height: 20px;
+  height: 18px;
+  outline: none;
+  border: none;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  outline: none;
+  padding: 2px;
+  background-color: transparent;
+}
+.EditableTexrArea {
+  width: 820px;
+  height: 20px;
+  outline: none;
+  border: none;
+  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: pre-wrap;
+  outline: none;
+  padding: 2px;
+  background-color: transparent;
+  resize: none;
+}

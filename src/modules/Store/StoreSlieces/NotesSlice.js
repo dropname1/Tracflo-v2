@@ -65,64 +65,75 @@ const initialState = {
     },
   ],
   activeNoteApp: null,
-  activeNoteAppId: null
+  activeNoteAppId: null,
 };
 
 export const NotesSlice = createSlice({
   name: "NotesSlice",
   initialState,
   reducers: {
-    createNoteApp (state, projectAndAppsId) {
+    createNoteApp(state, projectAndAppsId) {
       state.notesApps.push({
         appId: projectAndAppsId.payload,
-        notes: []
+        notes: [],
       });
     },
-    setActiveNoteApp (state,activeNoteAppId ) {
+    setActiveNoteApp(state, activeNoteAppId) {
       for (let i = 0; i < state.notesApps.length; i++) {
         if (state.notesApps[i].appId === activeNoteAppId.payload) {
           state.activeNoteAppId = state.notesApps[i].appId;
-          state.activeNoteApp = state.notesApps[i].notes
+          state.activeNoteApp = state.notesApps[i].notes;
         }
       }
     },
-    addNote (state, noteObject) {
+    addNote(state, noteObject) {
       state.activeNoteApp.push({
         id: Date.now(),
-        title: noteObject.payload.note
-      })
+        title: noteObject.payload.note,
+      });
 
-      state.notesApps.map(noteApp => {
-        if(noteApp.appId === state.activeNoteAppId) {
-          noteApp.notes = state.activeNoteApp
+      state.notesApps.map((noteApp) => {
+        if (noteApp.appId === state.activeNoteAppId) {
+          noteApp.notes = state.activeNoteApp;
         }
-        return noteApp
-      })
+        return noteApp;
+      });
     },
-    removeNote (state, noteId) { 
+    removeNote(state, noteId) {
       state.activeNoteApp = state.activeNoteApp.filter(
         (note) => note.id !== noteId.payload
-      ); 
-    
-      state.notesApps.map( noteApp => { 
-        if(noteApp.appId === state.activeNoteAppId) {
-          noteApp.notes = state.activeNoteApp
+      );
+
+      state.notesApps.map((noteApp) => {
+        if (noteApp.appId === state.activeNoteAppId) {
+          noteApp.notes = state.activeNoteApp;
         }
-        return noteApp
-      })
+        return noteApp;
+      });
     },
-    editNote (state, noteObject) {
-      
+    editNote(state, noteObject) {
+      let title = noteObject.payload.title;
+      let noteId = noteObject.payload.noteId;
+      let activeProject = noteObject.payload.activeProject;
 
+      state.notesApps = state.notesApps.map((noteApp) => {
+        if (noteApp.appId === activeProject) {
+          noteApp.notes.map((note) => {
+            if (note.id === noteId) {
+              note.title = title;
+            }
+          });
+        }
+        return noteApp;
+      });
     },
-    expandNote (state, noteObject) {
 
-    }
+    expandNote(state, noteObject) {},
   },
 });
 
 export const {
-  createNoteApp, 
+  createNoteApp,
   setActiveNoteApp,
   selectActiveNoteApp,
   removeNote,
@@ -131,4 +142,4 @@ export const {
   expandNote,
 } = NotesSlice.actions;
 
-export default NotesSlice.reducer
+export default NotesSlice.reducer;
