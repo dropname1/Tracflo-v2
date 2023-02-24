@@ -10,6 +10,7 @@ export default function AddNote({activeProject}) {
     if (e.code === "NumpadEnter") {
       e.preventDefault()
       dispath(addNote({note: e.target.value}));
+      e.target.value = ''
     }
   }
   return (
