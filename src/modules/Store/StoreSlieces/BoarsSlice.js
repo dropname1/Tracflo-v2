@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   boardApps: [
@@ -99,12 +99,50 @@ export const BoardSlice = createSlice({
         ],
       });
     },
+    addTaskInBoard (state, taskObject) {
 
+      let title = taskObject.payload.title
+      let activeApp = taskObject.payload.activeApp
+      
+      state.boardApps = state.boardApps.map( boardApp => {
+        if(boardApp.appId === activeApp) {
+          boardApp.boards[0].tasks.push({
+            id: Date.now(),
+            title: title,
+            boardId: boardApp.boards[0].id,
+          });
+        } return boardApp
+      })
+    },
+
+    editTaskInBoard (state, taskObject) {
+      let title = taskObject.payload.title;
+      let taskId = taskObject.payload.taskId;
+      let boardId = taskObject.payload.boardId;
+      let activeProject = taskObject.payload.activeProject;
+
+      state.boardApps = state.boardApps.map((boardApp,index) => {
+        if(boardApp.appId === activeProject) {
+          boardApp.boards.map( board => {
+            if(board.id === boardId) {
+              board.tasks.map(task => {
+                if(task.id === taskId) {
+                  task.title = title
+                }
+                return task
+              }) 
+            }
+            return board
+          })
+        }
+        return boardApp
+      });
+    }
     
   },
 });
 
-export const { createBoardApp } = BoardSlice.actions;
+export const { createBoardApp, addTaskInBoard, editTaskInBoard } = BoardSlice.actions;
 
 export default BoardSlice.reducer
 

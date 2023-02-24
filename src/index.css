@@ -391,6 +391,7 @@ background-color: #F1E9E7;
   height: 440px;
   max-height: 555px;
   overflow-y: auto;
+  overflow-x: hidden;
   background-color:#F8ECE9;
   border: 1px solid #BCB6B5;
 
@@ -447,17 +448,21 @@ background-color: #F1E9E7;
 .boardTaskWrapper {
   display: flex;
   justify-content: space-between;
-  height: 44px;
+  align-items: center;
+  min-height: 40px;
+  max-height: fit-content;
   width: 270px;
-  box-sizing: border-box;
-  line-height: 44px;
   border-radius: 6px;
   border: 1px solid rgba(128, 128, 128, 0.493);
   margin-bottom: 4px;
   background-color: #F8F7F4;
-  padding: 0 10px;
+  padding: 5px 10px;
+  box-sizing: border-box;
+
 }
 .boardTaskTitle {
+  display: flex;
+  align-items: center;
   font-size: 16px;
 }
 

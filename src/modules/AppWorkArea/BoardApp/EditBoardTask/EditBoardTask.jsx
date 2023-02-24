@@ -4,11 +4,11 @@ import { useRef } from "react";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { editNote } from "../../../Store/StoreSlieces/NotesSlice";
-import module from './EditNote.module.css'
+import { editTaskInBoard } from "../../../Store/StoreSlieces/BoarsSlice";
+import module from './EditBoardTask.module.css'
 
-export default function EditNote({note}) {
-  const [text, setText] = useState(note.title);
+export default function EditBoardTask({task}) {
+  const [text, setText] = useState(task.title);
   const [edit, setEdit] = useState(false);
   const [focus, setFocus] = useState(false);
   const lastRef = useRef(null);
@@ -26,18 +26,18 @@ export default function EditNote({note}) {
     setFocus(true);
   }
   function editFinish(e) {
-    if (e.code === "NumpadEnter") {
+    if (e.code === "NumpadEnter" && text.trim()) {
       setEdit(false);
     }
   }
   function blur() {
     setEdit(false);
     setFocus(false);
-    dispatch(editNote({ title: text, activeProject: activeProject, noteId: note.id}))
+    dispatch(editTaskInBoard({taskId: task.id ,title: text, activeProject: activeProject, boardId: task.boardId}))
   }
 
-  function autoSize (e) {
-    let textarea = e.target
+  function autoSize(e) {
+    let textarea = e.target;
     textarea.style.height = "0";
     textarea.style.height = textarea.scrollHeight + "px";
   }
@@ -53,8 +53,7 @@ export default function EditNote({note}) {
           {text}
         </div>
         <textarea
-          rows='1'
-          className={module.EditableTexrArea}
+          className={module.EditableInput}
           ref={focus ? lastRef : undefined}
           onBlurCapture={() => blur()}
           onKeyUpCapture={(e) => editFinish(e)}
@@ -64,7 +63,7 @@ export default function EditNote({note}) {
           onChange={(e) => setText(e.target.value)}
           onFocus={(e) => autoSize(e)}
           onInput={(e) => autoSize(e)}
-        ></textarea>
+        />
       </div>
     </div>
   );
