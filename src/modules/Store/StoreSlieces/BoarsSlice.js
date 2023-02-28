@@ -10,27 +10,27 @@ const initialState = {
           name: "Tasks",
           hasAddTask: true,
           tasks: [
-            { id: 1, title: "Leran Nux.js 11111", boardId: 1 },
-            { id: 2, title: "Leran Nux.js 11111", boardId: 1 },
-            { id: 3, title: "Leran Nux.js 11111", boardId: 1 },
+            { id: 1, title: "Leran Nux.js 11111", boardId: 1, order: 1},
+            { id: 2, title: "Leran Nux.js 11111", boardId: 1, order: 2},
+            { id: 3, title: "Leran Nux.js 11111", boardId: 1, order: 3},
           ],
         },
         {
           id: 2,
           name: "In Work",
           tasks: [
-            { id: 1, title: "Leran Nux.js Board 2", boardId: 2 },
-            { id: 2, title: "Leran Nux.js 11111", boardId: 2 },
-            { id: 3, title: "Leran Nux.js 11111", boardId: 2 },
+            { id: 4, title: "Leran Nux.js Board 2", boardId: 2, order: 1},
+            { id: 5, title: "Leran Nux.js 11111", boardId: 2,   order: 2},
+            { id: 6, title: "Leran Nux.js 11111", boardId: 2,   order: 3},
           ],
         },
         {
           id: 3,
           name: "Done",
           tasks: [
-            { id: 1, title: "Leran Nux.js Board 3", boardId: 3 },
-            { id: 2, title: "Leran Nux.js 11111", boardId: 3 },
-            { id: 3, title: "Leran Nux.js 11111", boardId: 3 },
+            { id: 7, title: "Leran Nux.js Board 3", boardId: 3, order: 1},
+            { id: 8, title: "Leran Nux.js 11111", boardId: 3,   order: 2},
+            { id: 9, title: "Leran Nux.js 11111", boardId: 3,   order: 3},
           ],
         },
       ],
@@ -44,32 +44,33 @@ const initialState = {
           name: "Tasks",
           hasAddTask: true,
           tasks: [
-            { id: 1, title: "Leran Nux.js PROJECT 2", boardId: 1 },
-            { id: 2, title: "Leran Nux.js PROJECT 2", boardId: 1 },
-            { id: 3, title: "Leran Nux.js PROJECT 2", boardId: 1 },
+            { id: 11, title: "Leran Nux.js PROJECT 2", boardId: 1 },
+            { id: 12, title: "Leran Nux.js PROJECT 2", boardId: 1 },
+            { id: 13, title: "Leran Nux.js PROJECT 2", boardId: 1 },
           ],
         },
         {
           id: 2,
           name: "In Work",
           tasks: [
-            { id: 1, title: "Leran Nux.js Board 2", boardId: 2 },
-            { id: 2, title: "Leran Nux.js 11111", boardId: 2 },
-            { id: 3, title: "Leran Nux.js 11111", boardId: 2 },
+            { id: 14, title: "Leran Nux.js Board 2", boardId: 2 },
+            { id: 15, title: "Leran Nux.js 11111", boardId: 2 },
+            { id: 16, title: "Leran Nux.js 11111", boardId: 2 },
           ],
         },
         {
           id: 3,
           name: "Done",
           tasks: [
-            { id: 1, title: "Leran Nux.js Board 3", boardId: 3 },
-            { id: 2, title: "Leran Nux.js 11111", boardId: 3 },
-            { id: 3, title: "Leran Nux.js 11111", boardId: 3 },
+            { id: 17, title: "Leran Nux.js Board 3", boardId: 3 },
+            { id: 18, title: "Leran Nux.js 11111", boardId: 3 },
+            { id: 19, title: "Leran Nux.js 11111", boardId: 3 },
           ],
         },
       ],
     },
   ],
+  dragStartTask: null,
 };
 
 export const BoardSlice = createSlice({
@@ -99,50 +100,118 @@ export const BoardSlice = createSlice({
         ],
       });
     },
-    addTaskInBoard (state, taskObject) {
+    addTaskInBoard(state, taskObject) {
+      let title = taskObject.payload.title;
+      let activeApp = taskObject.payload.activeApp;
 
-      let title = taskObject.payload.title
-      let activeApp = taskObject.payload.activeApp
-      
-      state.boardApps = state.boardApps.map( boardApp => {
-        if(boardApp.appId === activeApp) {
+      state.boardApps = state.boardApps.map((boardApp) => {
+        if (boardApp.appId === activeApp) {
           boardApp.boards[0].tasks.push({
             id: Date.now(),
             title: title,
             boardId: boardApp.boards[0].id,
+            order: Date.now()
           });
-        } return boardApp
-      })
+        }
+        return boardApp;
+      });
     },
 
-    editTaskInBoard (state, taskObject) {
+    editTaskInBoard(state, taskObject) {
       let title = taskObject.payload.title;
       let taskId = taskObject.payload.taskId;
       let boardId = taskObject.payload.boardId;
       let activeProject = taskObject.payload.activeProject;
 
-      state.boardApps = state.boardApps.map((boardApp,index) => {
-        if(boardApp.appId === activeProject) {
-          boardApp.boards.map( board => {
-            if(board.id === boardId) {
-              board.tasks.map(task => {
-                if(task.id === taskId) {
-                  task.title = title
+      state.boardApps = state.boardApps.map((boardApp, index) => {
+        if (boardApp.appId === activeProject) {
+          boardApp.boards.map((board) => {
+            if (board.id === boardId) {
+              board.tasks.map((task) => {
+                if (task.id === taskId) {
+                  task.title = title;
                 }
-                return task
-              }) 
+                return task;
+              });
             }
-            return board
+            return board;
+          });
+        }
+        return boardApp;
+      });
+    },
+    removeTaskInBoard(state, taskObject) {
+      let id = taskObject.payload.id;
+      let boardId = taskObject.payload.boardId;
+      let activeApp = taskObject.payload.activeApp;
+
+      state.boardApps = state.boardApps.map((boardApp) => {
+        if (boardApp.appId === activeApp) {
+          boardApp.boards.map((board) => {
+            if (board.id === boardId) {
+              board.tasks = board.tasks.filter((task) => task.id !== id);
+            }
+            return board;
+          });
+        }
+        return boardApp;
+      });
+    },
+    drag(state, taskObject) {
+      state.dragStartTask = taskObject
+    },
+    drop(state, boardObject) {
+
+      // убираем задачу из board
+      let task = state.dragStartTask.payload.task;
+      let taskActiveApp = state.dragStartTask.payload.activeApp;
+      let taskBoardId = state.dragStartTask.payload.boardId;
+
+      state.boardApps = state.boardApps.map((boardApp) => {
+        if (boardApp.appId === taskActiveApp) {
+          boardApp.boards = boardApp.boards.map((board) => {
+            if (board.id === taskBoardId) {
+              board.tasks = board.tasks.filter( boardTask => boardTask.id !== task.id)
+            }
+            return board;
+          });
+        }
+        return boardApp;
+      });
+
+      // добавляем задачу в другой board
+      let board = boardObject.payload.board;
+      let boardActiveApp = boardObject.payload.activeApp;
+
+      state.boardApps = state.boardApps.map((boardApp) => {
+        if (boardApp.appId === boardActiveApp) {
+          boardApp.boards = boardApp.boards.map( appBoard => {
+            if (appBoard.id === board.id) {
+              appBoard.tasks.push({
+                id: task.id,
+                title: task.title,
+                boardId: board.id,
+                order: task.order
+              });
+            }
+            return appBoard;
           })
         }
-        return boardApp
+        return boardApp;
       });
-    }
-    
+
+    },
   },
 });
 
-export const { createBoardApp, addTaskInBoard, editTaskInBoard } = BoardSlice.actions;
+export const {
+  createBoardApp,
+  addTaskInBoard,
+  editTaskInBoard,
+  removeTaskInBoard,
+  drag,
+  drop,
+} = BoardSlice.actions;
 
 export default BoardSlice.reducer
 

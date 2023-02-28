@@ -9,8 +9,9 @@ export default function AddTask() {
   const activeApp = useSelector(state => state.ProjectSlice.activeProjectId.payload)
 
   function addTask (e) {
-    if(e.code === 'Enter') {
+    if(e.code === 'Enter' && e.target.value.trim()) {
       dispath(addTaskInBoard({title: e.target.value, activeApp: activeApp}))
+      e.target.value = "";
     }
   }
   return (

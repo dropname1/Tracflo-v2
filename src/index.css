@@ -307,6 +307,9 @@ background-color: #F1E9E7;
 .rotate180 {
   transform: rotate(180deg);
 }
+.rotate90 {
+  transform: rotate(45deg);
+}
 .trashNote {
   padding: 15px 12px;
   margin-left: auto;
@@ -390,10 +393,9 @@ background-color: #F1E9E7;
   min-height: 440px;
   height: 440px;
   max-height: 555px;
-  overflow-y: auto;
-  overflow-x: hidden;
   background-color:#F8ECE9;
   border: 1px solid #BCB6B5;
+  overflow: hidden;
 
 }
 .boardTitleWrapper {
@@ -416,6 +418,13 @@ background-color: #F1E9E7;
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 365px;
+  min-height: 300px;
+  max-height: fit-content;
+  overflow-y: auto;
+  /* overflow-X: hidden; */
+
+
 }
 
 /* BoardAddTask */
@@ -429,7 +438,8 @@ background-color: #F1E9E7;
   border-top: none;
   margin-bottom: 10px;
   display: flex;
-  align-items: center;
+  align-items: center;  
+  /* display: none; */
 }
 .BoardAddTask {
   width: 270px;
@@ -465,7 +475,15 @@ background-color: #F1E9E7;
   align-items: center;
   font-size: 16px;
 }
-
+/* .boardTaskTrash {
+  opacity: 0;
+  cursor:pointer;
+  transition: opacity 0.3s;
+}
+.boardTaskTrash:hover {
+  opacity: 1;
+  transition: opacity 0.3s;
+} */
 /* SlicesApp  */
 
 .SliceWrapper {
