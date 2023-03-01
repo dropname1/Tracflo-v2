@@ -304,12 +304,7 @@ background-color: #F1E9E7;
   background-color: transparent;
   height: 20px;
 }
-.rotate180 {
-  transform: rotate(180deg);
-}
-.rotate90 {
-  transform: rotate(45deg);
-}
+
 .trashNote {
   padding: 15px 12px;
   margin-left: auto;
@@ -493,9 +488,9 @@ background-color: #F1E9E7;
   margin-left: 15px;
 }
 
-/* AddSlice */
+/* AddGoal */
 
-.addSlice {
+.addGoal {
   box-sizing:border-box;
   width: 580px;
   height: 46px;
@@ -510,7 +505,11 @@ background-color: #F1E9E7;
   height: 555px;
 }
 /* Goal  */
-
+.goalAndTasksWrapper {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: start;
+}
 .goalWrapper {
   width: 580px;
   box-sizing:border-box;
@@ -525,7 +524,7 @@ background-color: #F1E9E7;
 }
 .goalArrow {
   margin-right: 20px;
-  transform: rotate(180deg);
+  transition: all 0.3s;
 }
 
 .progressWrapper {
@@ -539,13 +538,13 @@ background-color: #F1E9E7;
   align-items: end;
 }
 .goalContextMenu {
-  position: absolute;
-  margin-left: 585px;
+  margin-left: 10px ;
   margin-top: 14px;
 }
 .goalOptionButton {
   transform: rotate(90deg);
   color: gray;
+  user-select: none;
 }
 /* goalProgress */
 
@@ -572,6 +571,29 @@ background-color: #F1E9E7;
   margin-left: 10px;
 }
 
+/* addSlice */
+.addSliceWrapper {
+  display: flex;
+
+}
+.addSliceInput {
+  width: 540px;
+  height: 44px;
+  box-sizing: border-box;
+  border: 1px solid #BCBBBA;
+  border-radius: 5px;
+  background-color: #F8F7F4;
+  margin-bottom: 8px;
+  outline: none;
+  padding: 0 40px;
+}
+.clearAddSLiceInput {
+  width: 40px;
+  height: 44px;
+  text-align: center;
+  line-height: 44px;
+  color: gray;
+}
 /* SliceTask */
 
 .sliceTaskWrapper {
@@ -775,6 +797,13 @@ line-height: 22px;
 margin-left: 20px;
 border-radius: 5px;
 margin-bottom: 20px;
+}
+.rotate180 {
+  transform: rotate(180deg);
+  transition: all 0.3s;
+}
+.rotate90 {
+  transform: rotate(45deg);
 }
 
 /* Gray Theme */

@@ -1,6 +1,6 @@
 import React from 'react'
 import ClearInput from '../../modules/Ceneral/clearInput'
-import AddSlice from '../../modules/AppWorkArea/SlicesApp/AddSlice'
+import AddGoal from '../../modules/AppWorkArea/SlicesApp/AddGoal'
 import Goal from '../../modules/AppWorkArea/SlicesApp/Goal'
 import { useSelector } from 'react-redux'
 
@@ -12,19 +12,19 @@ const activeProject = useSelector((state) => state.ProjectSlice.activeProjectId.
 const goalApp = (goalApp) => {
     if (goalApp.appId === activeProject) {
       return goalApp.goals.map(goal => {
-        return <Goal key={goal.id} goal={goal}/>
+        return <Goal key={goal.id} goal={goal} activeApp={activeProject} />;
       } )
     }
   }
 
 
   return (
-    <div className='SliceWrapper'>
-    <ClearInput/>
-    <div className="GoalsAndInputWrapper">
-      <AddSlice/>
-      {goalApps.map(goalApp)}
+    <div className="SliceWrapper">
+      <ClearInput />
+      <div className="GoalsAndInputWrapper">
+        <AddGoal activeApp={activeProject} />
+        {goalApps.map(goalApp)}
+      </div>
     </div>
-    </div>
-  )
+  );
 }

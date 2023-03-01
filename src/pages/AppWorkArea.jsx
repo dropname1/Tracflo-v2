@@ -3,7 +3,7 @@ import AppComponent from './AppComponent'
 import { useSelector } from 'react-redux'
 
 export default function AppWorkArea() {
-const [activeApp, setActiveApp] = useState('Board')
+const [activeApp, setActiveApp] = useState('Slices')
 const Apps = useSelector(state => state.AppsSlice.apps)
   return (
     <div className='AppWorkAreaWrapper'>

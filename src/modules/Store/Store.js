@@ -7,7 +7,7 @@ import NotesSlice from './StoreSlieces/NotesSlice'
 import PomodoroSlice from './StoreSlieces/PomadoroSlice'
 import TasksSlice from './StoreSlieces/TasksSlice'
 import TrashSlice from './StoreSlieces/TrashSlice'
-import MainSlice from './StoreSlieces/MainSlice'
+import AllContextSlice from './StoreSlieces/AllContextSlice'
 
 import { 
   persistStore, 
@@ -22,6 +22,7 @@ import {
 import storage from "redux-persist/lib/storage";
 
 const rootReducer = combineReducers({
+  AllContextSlice: AllContextSlice,
   ProjectSlice: ProjectSlice,
   AppsSlice: AppsSlice,
   BoardSlice: BoardSlice,
@@ -30,7 +31,6 @@ const rootReducer = combineReducers({
   PomodoroSlice: PomodoroSlice,
   TasksSlice: TasksSlice,
   TrashSlice: TrashSlice,
-  MainSlice: MainSlice,
 });
 
 const persistConfig = {

@@ -5,7 +5,6 @@ import AppWorkArea from './pages/AppWorkArea'
 
 export default function App() {
 
-
   return (
     <div className='App'>
       <Header/>
