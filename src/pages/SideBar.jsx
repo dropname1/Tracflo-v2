@@ -24,6 +24,7 @@ export default function SideBar() {
     dispatch(createSliceApp(projectAndAppsId));
     dispatch(createPomodoroApp(projectAndAppsId));
     // todo create trash app 
+    
   }
 
 
@@ -38,7 +39,7 @@ export default function SideBar() {
       </div>
       <div className="projectsWrapper">
         {projects.map((p) => (
-          <Project project={p} key={p.id} />
+          <Project project={p} key={p.id}/>
         ))}
       </div>
     </div>

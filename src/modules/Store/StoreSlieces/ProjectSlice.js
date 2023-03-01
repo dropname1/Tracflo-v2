@@ -34,7 +34,7 @@ export const ProjectSlice = createSlice({
   initialState,
   reducers: {
     removeProject: function (state, id) {
-      state.projects = state.projects.filter((project) => project.id !== id);
+      state.projects = state.projects.filter((project) => project.id !== id.payload);
     },
     selectProject(state, id) {
       state.activeProjectId = id;
@@ -59,10 +59,26 @@ export const ProjectSlice = createSlice({
         isSelect: false,
       });
     },
+    editProject (state, projectObject) {
+      let title = projectObject.payload.title
+      let project = projectObject.payload.project;
+
+      state.projects = state.projects.map( proj => {
+        if(proj.id === project.id) {
+          proj.title = title
+        }
+        return proj
+      })
+    }
   },
 });
 
-export const { removeProject, addProject, selectProject, createNewProject } =
-  ProjectSlice.actions;
+export const {
+  removeProject,
+  addProject,
+  selectProject,
+  createNewProject,
+  editProject,
+} = ProjectSlice.actions;
 
 export default ProjectSlice.reducer

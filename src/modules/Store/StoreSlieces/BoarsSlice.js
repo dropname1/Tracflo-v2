@@ -187,7 +187,7 @@ export const BoardSlice = createSlice({
         if (boardApp.appId === boardActiveApp) {
           boardApp.boards = boardApp.boards.map( appBoard => {
             if (appBoard.id === board.id) {
-              appBoard.tasks.push({
+              appBoard.tasks.unshift({
                 id: task.id,
                 title: task.title,
                 boardId: board.id,
