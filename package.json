@@ -10,11 +10,13 @@
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.2",
+    "dayjs": "^1.11.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.0",
-    "redux-persist": "^6.0.0"
+    "redux-persist": "^6.0.0",
+    "use-timer": "^2.0.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.26",

@@ -16,7 +16,6 @@ export default function History() {
   }
 
   function pomodoroItem(pomodoroApp) {
-    console.log(pomodoroApp)
     return pomodoroApp.pomodoroItems.map((item) => {
       if (item.type === "Pomadoro") {
         return <WorkItem pomo={item} key={item.id} />;

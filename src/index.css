@@ -505,6 +505,7 @@ background-color: #F1E9E7;
   height: 555px;
 }
 /* Goal  */
+
 .goalAndTasksWrapper {
   display: flex;
   flex-direction: row-reverse;
@@ -541,10 +542,21 @@ background-color: #F1E9E7;
   margin-left: 10px ;
   margin-top: 14px;
 }
+
 .goalOptionButton {
-  transform: rotate(90deg);
-  color: gray;
+  color: black;
+  width: 20px;
+  height: 25px;
+  outline: none;
+  border: none;
+  background-color: transparent;
   user-select: none;
+  color: transparent;
+  transform: rotate(90deg);
+  cursor: default;
+}
+.goalOptionButton::placeholder {
+  font-size: 21px;
 }
 /* goalProgress */
 
@@ -673,6 +685,8 @@ background-color: #F1E9E7;
   text-align: center;
   font-size: 60px;
   margin-bottom: 20px;
+  outline: none;
+  cursor: default;
 }
 .buttonStart, .buttonStop, .buttonRefresh, .buttonRelaxation {
   border: 1px solid rgba(128, 128, 128, 0.493);
@@ -685,7 +699,13 @@ background-color: #F1E9E7;
   text-align: start;
   font-size: 18px;
   cursor: pointer;
+  transition: box-shadow 0.3s;
+
 } 
+.buttonStart:hover, .buttonStop:hover, .buttonRefresh:hover, .buttonRelaxation:hover {
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.185);
+  transition: box-shadow 0.3s;
+}
 .buttonStart {
 background-color: #E9EBF8;
 margin-right: 10px;

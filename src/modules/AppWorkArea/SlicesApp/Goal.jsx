@@ -5,22 +5,26 @@ import SliceTask from "./SliceTask";
 import GoalContextmenu from "./GoalContextmenu";
 import AddSlce from "./AddSlce";
 import { useState } from "react";
-
+import EditGoalItem from "./EditGoalItem/EditGoalItem";
 
 export default function Goal({ goal, activeApp }) {
   const [isAddSlice, setIsAddSlice] = useState(false);
   const [isExpand, setIsExpand] = useState(true);
-  const [isContextMenu, setIsContextMenu] = useState(false)
-
+  const [isContextMenu, setIsContextMenu] = useState(false);
 
   function isAddSliceOpen() {
     setIsAddSlice(!isAddSlice);
   }
-  function expandSlices () {
-    setIsExpand(!isExpand)
+  function expandSlices() {
+    setIsExpand(!isExpand);
   }
-  function contextMenuOpen (e) {
+  function contextMenuOpen(e) {
     setIsContextMenu(!isContextMenu);
+  }
+  function blurElement(e) {
+    setTimeout(() => {
+      setIsContextMenu(false);
+    }, 100);
   }
   return (
     <div className="goalAndTasksWrapper">
@@ -43,16 +47,19 @@ export default function Goal({ goal, activeApp }) {
             alt=""
             onClick={() => expandSlices()}
           />
-          <div className="goalTitle">{goal.title}</div>
+          <div className="goalTitle">
+            <EditGoalItem goal={goal} activeApp={activeApp} />
+          </div>
           <div className="progressWrapper">
             <Progress progressState={goal.progress} slices={goal.slices} />
           </div>
-          <div
+          <input
             className="goalOptionButton"
             onClick={(e) => contextMenuOpen(e)}
-          >
-            ...
-          </div>
+            onBlur={(e) => blurElement(e)}
+            placeholder="..."
+            maxLength={0}
+          />
         </div>
         <div
           className="slicesAndAddSliceWrapper"

@@ -2,6 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { removeSlice } from "../../Store/StoreSlieces/SlicesSliece";
 import { completedSlice } from "../../Store/StoreSlieces/SlicesSliece";
+import EditSliceItem from './EditSliceItem/EditSlicetItem'
 
 export default function SliceTask({ task, activeApp, goalId }) {
   const dispatch = useDispatch();
@@ -24,8 +25,9 @@ export default function SliceTask({ task, activeApp, goalId }) {
       <div
         className="sliceTaskTitle"
         style={{ textDecoration: task.completed ? "line-through" : "none" }}
+        
       >
-        {task.title}
+        <EditSliceItem task={task} goalId={goalId} activeApp={activeApp}/>
       </div>
       <div
         className="removeSliceTask"

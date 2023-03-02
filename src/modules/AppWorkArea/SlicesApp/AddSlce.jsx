@@ -8,6 +8,7 @@ export default function AddSlce({ activeApp, goalId }) {
     function addSlicefunction (e) {
         if(e.code === 'Enter') {
             dispatch(addSlice({title: e.target.value, activeApp: activeApp, goalId: goalId}))
+            e.target.value = ''
         }
     }
   return (
