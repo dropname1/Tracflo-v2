@@ -3,9 +3,12 @@ import { useState } from "react";
 import { useTimer } from "use-timer";
 import dayjs from "dayjs";
 import { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { addPomodoroItem } from "../../Store/StoreSlieces/PomadoroSlice";
 
-export default function Pomodoro() {
-  const [isWork, setIsWork] = useState(true)
+export default function Pomodoro({ activeApp }) {
+  const [isWork, setIsWork] = useState(true);
+  const dispatch = useDispatch();
 
   const {
     time: workTime,
@@ -26,30 +29,72 @@ export default function Pomodoro() {
     initialTime: 5 * 60,
     timerType: "DECREMENTAL",
   });
-  
-  
+
+  function secondFormater(initialTime, timeType) {
+    return dayjs((initialTime - timeType) * 1000).format("mm:ss");
+  }
+
   function pomodoroStart() {
-    if(isWork) {
-      workStart()
-    } else relaxStart()
+    if (isWork) {
+      workStart();
+    } else relaxStart();
   }
   function pomodoroPause() {
     if (isWork) {
       workPause();
     } else relaxPause();
-    
   }
+
+
   function pomodoroReset() {
-    if (isWork) {
-      workReset();
-    } else relaxReset();
+    workReset();
+    relaxReset();
+    if (isWork && workTime < 1500) {
+      console.log(workTime)
+      dispatch(
+        addPomodoroItem({
+          activeApp: activeApp,
+          type: "Pomadoro",
+          time: secondFormater(1500, workTime),
+        })
+      );
+    } 
     
+    if (!isWork && relaxTime < 300) {
+      dispatch(
+        addPomodoroItem({
+          activeApp: activeApp,
+          type: "Relaxation",
+          time: secondFormater(300, relaxTime),
+        })
+      );
+    }
   }
+
+
   function pomodoroSwitch() {
-    if(isWork) {
-      workReset();
-    } else relaxReset();
-    setIsWork(!isWork)
+    workReset();
+    relaxReset();
+    if (isWork && workTime < 1500) {
+      dispatch(
+        addPomodoroItem({
+          activeApp: activeApp,
+          type: "Pomadoro",
+          time: secondFormater(1500, workTime),
+        })
+      );
+    } 
+
+    if (!isWork && relaxTime < 300) {
+      dispatch(
+        addPomodoroItem({
+          activeApp: activeApp,
+          type: "Relaxation",
+          time: secondFormater(300, relaxTime),
+        })
+      );
+    }
+    setIsWork(!isWork);
   }
 
   return (
