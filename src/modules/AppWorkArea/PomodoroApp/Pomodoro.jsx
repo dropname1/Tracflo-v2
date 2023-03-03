@@ -50,7 +50,6 @@ export default function Pomodoro({ activeApp }) {
     workReset();
     relaxReset();
     if (isWork && workTime < 1500) {
-      console.log(workTime)
       dispatch(
         addPomodoroItem({
           activeApp: activeApp,

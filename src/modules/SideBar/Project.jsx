@@ -5,6 +5,7 @@ import { selectProject } from "../Store/StoreSlieces/ProjectSlice";
 import { useSelector } from "react-redux";
 import { removeProject } from "../Store/StoreSlieces/ProjectSlice";
 import EditProject from "./EditProjectOption/EditProject";
+import { addProjectTrash } from "../Store/StoreSlieces/TrashSlice";
 
 export default function Project({ project }) {
   const activeProject = useSelector(
@@ -12,6 +13,10 @@ export default function Project({ project }) {
   );
   const dispatch = useDispatch();
 
+  function deleteProject () {
+    dispatch(addProjectTrash({id: project.id, title: project.title}))
+    dispatch(removeProject(project.id));
+  }
   return (
     <div
       className="Project"
@@ -30,7 +35,7 @@ export default function Project({ project }) {
         width="14"
         height="17"
         alt=""
-        onClick={() => dispatch(removeProject(project.id))}
+        onClick={() => deleteProject()}
       />
     </div>
   );

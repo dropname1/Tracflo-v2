@@ -60,7 +60,7 @@ useEffect(()=> {
               className="radioSwitchTheme"
               type="radio"
               name="switchTheme"
-              checked={activeTheme === "Classic"}
+              defaultChecked={activeTheme === "Classic"}
               onClick={() => setActiveTheme("Classic")}
             />
             Classic
@@ -73,7 +73,7 @@ useEffect(()=> {
               className="radioSwitchTheme"
               type="radio"
               name="switchTheme"
-              checked={activeTheme === "Gray"}
+              defaultChecked={activeTheme === "Gray"}
               onClick={() => setActiveTheme("Gray")}
             />
             Gray
@@ -86,7 +86,7 @@ useEffect(()=> {
               className="radioSwitchTheme"
               type="radio"
               name="switchTheme"
-              checked={activeTheme === "Pink - Gold"}
+              defaultChecked={activeTheme === "Pink - Gold"}
               onClick={() => setActiveTheme("Pink - Gold")}
             />
             Pink - Gold

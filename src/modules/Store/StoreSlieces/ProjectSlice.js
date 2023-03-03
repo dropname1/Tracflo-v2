@@ -69,6 +69,22 @@ export const ProjectSlice = createSlice({
         }
         return proj
       })
+    },
+    recoverAll_Trash(state, recoverObject) {
+      if(recoverObject) {
+        state.projects = [...state.projects, ...recoverObject.payload];
+      }
+    },
+    recoverProject_Trash(state, recoverObject) {
+      let id = recoverObject.payload.id
+      let title = recoverObject.payload.title
+      if(recoverObject) {
+        state.projects.push({
+          id: id,
+          title: title,
+          isSelect: false,
+        })
+      }
     }
   },
 });
@@ -79,6 +95,8 @@ export const {
   selectProject,
   createNewProject,
   editProject,
+  recoverAll_Trash,
+  recoverProject_Trash,
 } = ProjectSlice.actions;
 
 export default ProjectSlice.reducer

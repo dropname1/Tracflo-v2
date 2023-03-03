@@ -1,25 +1,34 @@
 import React from 'react'
-import PomodoroWorkTimeItem from '../../modules/AppWorkArea/PomodoroApp/PomodoroHistoryItems/PomoWorkTime'
-import PomodoroRelaxationTimeItem from '../../modules/AppWorkArea/PomodoroApp/PomodoroHistoryItems/PomoRelaxationTime'
-import TodoTask from '../../modules/AppWorkArea/TasksApp/Task'
-import Note from '../../modules/AppWorkArea/NotesApp/Note'
+import RemovedProject from '../../modules/AppWorkArea/TrashApp/RemovedProject';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
+import { removeAll } from '../../modules/Store/StoreSlieces/TrashSlice';
+import { recoverAll_Trash } from '../../modules/Store/StoreSlieces/ProjectSlice';
+import { recoverAll } from '../../modules/Store/StoreSlieces/TrashSlice';
 
 export default function TrashApp() {
+  const trash = useSelector((state) => state.TrashSlice.trash);
+  const dispatch = useDispatch()
+
+  function recoverPropjects () {
+    dispatch(recoverAll_Trash(trash));
+    dispatch(recoverAll());
+  }
   return (
     <div className="trashAppWrapper">
       <div className="trashButtons">
-        <button className="clearTrash">Clear trash</button>
-        <button className="RecoverTrash">Recover All</button>
+        <button className="clearTrash" onClick={() => dispatch(removeAll())}>
+          Clear trash
+        </button>
+        <button
+          className="RecoverTrash"
+          onClick={() => recoverPropjects()}
+        >
+          Recover All
+        </button>
       </div>
       <div className="trashItemsWrapper">
-        {/* <TodoTask />
-        <PomodoroRelaxationTimeItem />
-        <Note />
-        <PomodoroRelaxationTimeItem />
-        <PomodoroWorkTimeItem />
-        <Note />
-        <Note />
-        <Note /> */}
+        {trash && trash.map((p) => <RemovedProject key={p.id} project={p} />)}
       </div>
     </div>
   );

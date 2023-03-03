@@ -181,6 +181,7 @@ background-color: #F1E9E7;
   transition: opacity 0.3s;
 }
 
+
 /* AppWorkArea */
 .AppWorkAreaWrapper {
   width: 979px;
@@ -294,6 +295,11 @@ background-color: #F1E9E7;
   width: fit-content;
   margin: 10px 10px;
   align-self: start;
+  background-color: #80808080;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  box-sizing: border-box;
 }
 .noteText {
   font-family: Inter;
@@ -645,6 +651,7 @@ background-color: #F1E9E7;
   width: 120px;
   background-color: #fddcd4;
   font-size: 14px;
+  border-radius: 5px;
 }
 .AddSlice, .RemoveGoal {
   box-sizing: border-box;
@@ -653,9 +660,16 @@ background-color: #F1E9E7;
   border: 1px solid rgba(128, 128, 128, 0.493);
   line-height: 25px;
   padding-left: 10px;
+
 }
 .RemoveGoal {
   border-top: none;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+.AddSlice {
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 /* PomadoroApp */
@@ -829,6 +843,65 @@ margin-bottom: 20px;
   transform: rotate(45deg);
 }
 
+/* RemovedProject */
+
+.trashProject {
+  background-color: #F8ECE9;
+  border: 1px solid #BCB6B5;
+  width: 280px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  height: 34px;
+  overflow: hidden;
+}
+.trashOptions {
+  transform: rotate(90deg);
+  margin-left: auto;
+  width: 30px;
+  height: 30px;
+  text-align: center;
+  margin-right: -5px;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  color: transparent;
+  font-size: 18px;
+  cursor: default;
+
+}
+.circleTrash {
+  width: 8px;
+  height: 8px;
+  background-color: #D9D9D9;
+  border-radius: 50%;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.trashContextMenu {
+  background-color:#fddcd4;
+  border: 1px solid #BCB6B5;
+  border-radius: 5px;
+  position: absolute;
+  margin-left: 285px;
+}
+.trashRecover {
+border-bottom: 1px solid #BCB6B5;
+padding: 2px 10px;
+font-size: 14px;
+transition: background-color 0.3s;
+
+}
+.trashRemove {
+padding: 2px 10px;
+font-size: 14px;
+transition: background-color 0.3s;
+
+}
+.trashRemove:hover, .trashRecover:hover{
+  transition: background-color 0.3s;
+  background-color: #e0b8ae;
+} 
 /* Gray Theme */
 .Gray-sidebarWrapper {
   background-color: #C6C6C6;

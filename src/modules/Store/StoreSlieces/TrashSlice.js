@@ -1,21 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  trashApps: [
+  trash: [
     {
-      id: 1,
-      objectType: "Task",
-      object: { id: 1, title: "Leran Nuxt.js", completed: false },
+      id: 341,
+      title: "Leran JavaScript",
     },
     {
-      id: 1,
-      objectType: "PomoadoroItem",
-      object: { id: 3, time: "4:34", type: "Relaxation" },
+      id: 25522,
+      title: "Leran React",
     },
     {
-      id: 1,
-      objectType: "Note",
-      object: {id: 1, title: 'This is Note', expanded: false, overflow: false},
+      id: 523,
+      title: "Leran Vue",
     },
   ],
 };
@@ -24,12 +21,35 @@ export const TrashSlice = createSlice({
   name: "TrashSlice",
   initialState,
   reducers: {
-    addTrashApp(state) {
-
+    addProjectTrash (state, trashObject) {
+      let id = trashObject.payload.id
+      let title = trashObject.payload.title
+      state.trash.unshift({
+        id: id,
+        title: title,
+      })
+    },
+    removeAll (state) {
+      state.trash = []
+    },
+    recoverAll(state) {
+      state.trash = []
+    },
+    removeProject(state, id) {
+      state.trash = state.trash.filter( p => p.id !== id.payload)
+    },
+    recoverProject(state, id) {
+      state.trash = state.trash.filter((p) => p.id !== id.payload);
     }
   },
 });
 
-export const {} = TrashSlice.actions;
+export const {
+  addProjectTrash,
+  removeAll,
+  recoverAll,
+  removeProject,
+  recoverProject,
+} = TrashSlice.actions;
 
 export default TrashSlice.reducer;
