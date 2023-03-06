@@ -3,7 +3,7 @@ import trash from '../../../assets/ui/8.Trash.svg'
 import { useDispatch } from 'react-redux'
 import { removeTask, completedTask } from '../../Store/StoreSlieces/TasksSlice'
 import { useSelector } from 'react-redux'
-import EditWithClick from '../TasksApp/EditOptionItem/EditOption'
+import EditWithClick from './EditOptionItem/EditOption'
 
 export default function Task({task}) {
   const activeProject = useSelector(state => state.ProjectSlice.activeProjectId.payload)

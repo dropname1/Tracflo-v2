@@ -201,6 +201,23 @@ export const BoardSlice = createSlice({
       });
 
     },
+    // renameBoardTitle(state, boardObject){
+    //   let title = boardObject.payload.title;
+    //   let boardId = boardObject.payload.boardId;
+    //   let activeApp = boardObject.payload.activeApp;
+
+    //   state.boardApps = state.boardApps.map((boardApp) => {
+    //     if (boardApp.appId === activeApp) {
+    //       boardApp.boards.map((board) => {
+    //         if (board.id === boardId) {
+    //           board.title = title
+    //         }
+    //         return board;
+    //       });
+    //     }
+    //     return boardApp;
+    //   });
+    // }
   },
 });
 

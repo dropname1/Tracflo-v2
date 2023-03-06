@@ -7,7 +7,7 @@ import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setActiveNoteApp } from '../../modules/Store/StoreSlieces/NotesSlice'
 
-export default function NotesApp() {
+export default function NotesApp({isActiveApp}) {
 
   const notesApps = useSelector((state) => state.NotesSlice.notesApps);
   const activeProject = useSelector(state => state.ProjectSlice.activeProjectId.payload)
@@ -32,7 +32,13 @@ export default function NotesApp() {
   };
 
   return (
-    <div className="notesApp">
+    <div
+      className="notesApp"
+      style={{
+        height: isActiveApp === "Notes" ? "initial" : "0",
+        overflow: isActiveApp === "Notes" ? "initial" : "hidden",
+      }}
+    >
       <ClearInput />
       <div className="inputAndNotesWrapper">
         <AddNote activeProject={activeProject} />

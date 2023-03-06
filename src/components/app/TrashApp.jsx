@@ -6,24 +6,27 @@ import { removeAll } from '../../modules/Store/StoreSlieces/TrashSlice';
 import { recoverAll_Trash } from '../../modules/Store/StoreSlieces/ProjectSlice';
 import { recoverAll } from '../../modules/Store/StoreSlieces/TrashSlice';
 
-export default function TrashApp() {
+export default function TrashApp({ isActiveApp }) {
   const trash = useSelector((state) => state.TrashSlice.trash);
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
-  function recoverPropjects () {
+  function recoverPropjects() {
     dispatch(recoverAll_Trash(trash));
     dispatch(recoverAll());
   }
   return (
-    <div className="trashAppWrapper">
+    <div
+      className="trashAppWrapper"
+      style={{
+        height: isActiveApp === "Trash" ? "initial" : "0",
+        overflow: isActiveApp === "Trash" ? "initial" : "hidden",
+      }}
+    >
       <div className="trashButtons">
         <button className="clearTrash" onClick={() => dispatch(removeAll())}>
           Clear trash
         </button>
-        <button
-          className="RecoverTrash"
-          onClick={() => recoverPropjects()}
-        >
+        <button className="RecoverTrash" onClick={() => recoverPropjects()}>
           Recover All
         </button>
       </div>

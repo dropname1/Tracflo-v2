@@ -1,8 +1,8 @@
 .EditableText {
   width: 820px;
 
-  height: 32px;
-  min-height: 32px;
+  height: 40px;
+  min-height: 40px;
   max-height: fit-content;
 
   outline: none;
@@ -19,8 +19,8 @@
 .EditableTexrArea {
   width: 820px;
 
-  height: auto;
-  min-height: 32px;
+  height: 40px;
+  min-height: 40px;
   max-height: fit-content;
 
   outline: none;

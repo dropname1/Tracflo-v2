@@ -1,9 +1,22 @@
 import React, { useState } from 'react'
+import { useEffect } from 'react'
 import AppComponent from './AppComponent'
 import { useSelector } from 'react-redux'
 
 export default function AppWorkArea() {
-const [activeApp, setActiveApp] = useState('Notes')
+const [activeApp, setActiveApp] = useState("Notes");
+
+useEffect(() => {
+  setActiveApp(JSON.parse(localStorage.getItem("activeApp")));
+}, []);
+
+useEffect(() => {
+  localStorage.setItem("activeApp", JSON.stringify(activeApp)) ?? null;
+}, [activeApp]);
+
+
+
+
 const Apps = useSelector(state => state.AppsSlice.apps)
   return (
     <div className='AppWorkAreaWrapper'>

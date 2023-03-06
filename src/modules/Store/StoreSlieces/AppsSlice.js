@@ -14,15 +14,22 @@ const initialState = {
         {id: 4, title: 'Slices', selected: false, createdItems: 0, svgImage: Slices},
         {id: 5, title: 'Pomodoro', selected: false, createdItems: 0, svgImage: Pomodoro},
         {id: 6, title: 'Trash', selected: false, createdItems: 0, svgImage: Trash},
-    ]
+    ],
+    activeApp: {payload: 'Notes'}
 }
 
 export const AppsSlice = createSlice({
   name: "AppSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    setActiveApp (state, activeAppName) {
+      // state.activeApp.payload = activeAppName.payload
+      // console.log(state.activeApp);
+
+    }
+  },
 });
 
-export const {} = AppsSlice.actions;
+export const { setActiveApp } = AppsSlice.actions;
 
 export default AppsSlice.reducer;

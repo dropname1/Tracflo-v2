@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 import NotesApp from '../components/app/NotesApp'
 import TasksApp from '../components/app/TasksApp'
 import BoardApp from '../components/app/BoardApp'
@@ -7,17 +7,17 @@ import PomodoroApp from '../components/app/PomodoroApp'
 import TrashApp from '../components/app/TrashApp'
 
 export default function AppComponent({activeApp}) {
-
 function renderApp (activeApp) {
-    switch(activeApp) {
-            case 'Notes': return <NotesApp/>; break;
-            case 'Tasks': return <TasksApp/>; break;
-            case 'Board': return <BoardApp/>; break;
-            case 'Slices': return <SlicesApp/>; break;
-            case 'Pomodoro': return <PomodoroApp/>; break;
-            case 'Trash': return <TrashApp/>; break;
-            default: return null
-        }
+    return (
+      <Fragment>
+        <NotesApp isActiveApp={activeApp} />
+        <TasksApp isActiveApp={activeApp} />
+        <BoardApp isActiveApp={activeApp} />
+        <SlicesApp isActiveApp={activeApp} />
+        <PomodoroApp isActiveApp={activeApp} />
+        <TrashApp isActiveApp={activeApp} />
+      </Fragment>
+    );   
 }
   return (
     <div>{renderApp(activeApp)}</div>

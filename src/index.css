@@ -224,7 +224,6 @@ background-color: #F1E9E7;
 
 .notesApp {
   display: flex;
-
 }
 .inputAndNotesWrapper {
   margin-left: 15px;
@@ -252,9 +251,9 @@ background-color: #F1E9E7;
 /* AddNote */
 
 .addNote {
-  width: 916px;
-  min-width: 916px;
-  max-width: 916px;
+  width: 900px;
+  min-width: 900px;
+  max-width: 900px;
   height: 46px;
   min-height: 46px;
   max-height: 400px;

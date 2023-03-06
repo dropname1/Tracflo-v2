@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import Board from "../../modules/AppWorkArea/BoardApp/Board";
 import BoardWithAddTask from "../../modules/AppWorkArea/BoardApp/BoardWithAddTask";
 
-export default function BoardApp() {
+export default function BoardApp({ isActiveApp }) {
   const boardApps = useSelector((state) => state.BoardSlice.boardApps);
   const activeProject = useSelector(
     (state) => state.ProjectSlice.activeProjectId.payload
@@ -32,6 +32,14 @@ export default function BoardApp() {
   };
 
   return (
-    <div className="boardsWrapper">{boardApps && boardApps.map(boardApp)}</div>
+    <div
+      className="boardsWrapper"
+      style={{
+        height: isActiveApp === "Board" ? "initial" : "0",
+        overflow: isActiveApp === "Board" ? "initial" : "hidden",
+      }}
+    >
+      {boardApps && boardApps.map(boardApp)}
+    </div>
   );
 }
