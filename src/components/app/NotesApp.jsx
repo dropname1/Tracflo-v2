@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { setActiveNoteApp } from '../../modules/Store/StoreSlieces/NotesSlice'
+import { TransitionGroup, CSSTransition } from 'react-transition-group'
 
 export default function NotesApp({isActiveApp}) {
 
@@ -26,26 +27,36 @@ export default function NotesApp({isActiveApp}) {
   } 
    
   const note = (noteApp) => {
-    return noteApp.notes.map((note, index) => {
-      return <Note note={note} key={note.id} />;
+    return noteApp.notes.map((note) => {
+      return (
+        <CSSTransition key={note.id} classNames='fade' timeout={250}>
+          <Note note={note} />
+        </CSSTransition>
+      );
     });
   };
 
   return (
-    <div
-      className="notesApp"
-      style={{
-        height: isActiveApp === "Notes" ? "initial" : "0",
-        overflow: isActiveApp === "Notes" ? "initial" : "hidden",
-      }}
-    >
-      <ClearInput />
-      <div className="inputAndNotesWrapper">
-        <AddNote activeProject={activeProject} />
-        <div className="notesWrapper">
-          {notesApps && notesApps.map(noteApp)}
+    <TransitionGroup>
+      <CSSTransition key={isActiveApp} classNames="fade2" timeout={250}>
+        <div
+          className="notesApp"
+          style={{
+            height: isActiveApp === "Notes" ? "initial" : "0",
+            overflow: isActiveApp === "Notes" ? "initial" : "hidden",
+          }}
+        >
+          <ClearInput />
+          <div className="inputAndNotesWrapper">
+            <AddNote activeProject={activeProject} />
+            <div className="notesWrapper">
+              <TransitionGroup>
+                {notesApps && notesApps.map(noteApp)}
+              </TransitionGroup>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
+      </CSSTransition>
+    </TransitionGroup>
   );
 }

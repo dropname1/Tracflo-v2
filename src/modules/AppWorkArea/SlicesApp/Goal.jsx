@@ -6,6 +6,8 @@ import GoalContextmenu from "./GoalContextmenu";
 import AddSlce from "./AddSlce";
 import { useState } from "react";
 import EditGoalItem from "./EditGoalItem/EditGoalItem";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 
 export default function Goal({ goal, activeApp }) {
   const [isAddSlice, setIsAddSlice] = useState(false);
@@ -69,15 +71,18 @@ export default function Goal({ goal, activeApp }) {
             {isAddSlice && <AddSlce activeApp={activeApp} goalId={goal.id} />}
           </div>
           <div className="goalTasksWrapper">
-            {goal &&
-              goal.slices.map((task) => (
-                <SliceTask
-                  task={task}
-                  key={task.id}
-                  activeApp={activeApp}
-                  goalId={goal.id}
-                />
-              ))}
+            <TransitionGroup>
+              {goal &&
+                goal.slices.map((task) => (
+                  <CSSTransition key={task.id} classNames='fade' timeout={250}>
+                    <SliceTask
+                      task={task}
+                      activeApp={activeApp}
+                      goalId={goal.id}
+                    />
+                  </CSSTransition>
+                ))}
+            </TransitionGroup>
           </div>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 import Board from "../../modules/AppWorkArea/BoardApp/Board";
 import BoardWithAddTask from "../../modules/AppWorkArea/BoardApp/BoardWithAddTask";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function BoardApp({ isActiveApp }) {
   const boardApps = useSelector((state) => state.BoardSlice.boardApps);
@@ -19,27 +20,34 @@ export default function BoardApp({ isActiveApp }) {
     return boardApp.boards.map((board) => {
       if (board.hasOwnProperty("hasAddTask")) {
         return (
-          <BoardWithAddTask
-            board={board}
-            key={board.id}
-            activeApp={activeProject}
-          />
+          <CSSTransition key={board.id} classNames="fade" timeout={250}>
+            <BoardWithAddTask
+              board={board}
+              activeApp={activeProject}
+            />
+          </CSSTransition>
         );
       } else {
-        return <Board board={board} key={board.id} activeApp={activeProject} />;
+        return (
+            <Board key={board.id} board={board} activeApp={activeProject} />
+        );
       }
     });
   };
 
   return (
-    <div
-      className="boardsWrapper"
-      style={{
-        height: isActiveApp === "Board" ? "initial" : "0",
-        overflow: isActiveApp === "Board" ? "initial" : "hidden",
-      }}
-    >
-      {boardApps && boardApps.map(boardApp)}
-    </div>
+    <TransitionGroup>
+      <CSSTransition key={isActiveApp} classNames="fade2" timeout={250}>
+        <div
+          className="boardsWrapper"
+          style={{
+            height: isActiveApp === "Board" ? "initial" : "0",
+            overflow: isActiveApp === "Board" ? "initial" : "hidden",
+          }}
+        >
+            {boardApps && boardApps.map(boardApp)}
+        </div>
+      </CSSTransition>
+    </TransitionGroup>
   );
 }

@@ -5,6 +5,8 @@ import CloseInput from "../../Ceneral/clearInput";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { drop } from "../../Store/StoreSlieces/BoarsSlice";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+
 
 export default function BoardWithAddTask({ board, activeApp }) {
   const [closeInput, setCloseInput] = useState(false);
@@ -39,15 +41,19 @@ export default function BoardWithAddTask({ board, activeApp }) {
       {closeInput && <AddTask />}
       <div
         className="boardTasksWrapper"
-        style={{height : closeInput? '300px' : '365px'}}
+        style={{ height: closeInput ? "300px" : "365px" }}
         onDrop={(e) => dropTask(e)}
         onDragOver={(e) => e.preventDefault()}
         onDragEnter={(e) => e.preventDefault()}
       >
-        {board.tasks &&
-          board.tasks.map((task) => (
-            <BoardTask task={task} key={task.id} boardId={board.id} />
-          ))}
+        <TransitionGroup>
+          {board.tasks &&
+            board.tasks.map((task) => (
+              <CSSTransition key={task.id} classNames='fade' timeout={250}>
+                <BoardTask task={task} boardId={board.id} />
+              </CSSTransition>
+            ))}
+        </TransitionGroup>
       </div>
     </div>
   );

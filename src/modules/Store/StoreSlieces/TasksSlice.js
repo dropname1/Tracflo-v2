@@ -45,7 +45,7 @@ export const TasksSlice = createSlice({
 
       state.taskApps = state.taskApps.map( taskApp => {
         if(taskApp.appId === activeProject) {
-          taskApp.tasks.push({
+          taskApp.tasks.unshift({
             id: Date.now(),
             title: task,
             completed: false,

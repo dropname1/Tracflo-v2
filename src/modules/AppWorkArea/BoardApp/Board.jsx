@@ -2,6 +2,7 @@ import React from "react";
 import BoardTask from "./BoardTask";
 import { useDispatch } from "react-redux";
 import { drop } from "../../Store/StoreSlieces/BoarsSlice";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function Board({ board, activeApp }) {
   const dispatch = useDispatch();
@@ -19,12 +20,16 @@ export default function Board({ board, activeApp }) {
         className="boardTasksWrapper"
         onDrop={(e) => dropTask(e)}
         onDragOver={(e) => e.preventDefault()}
-        onDragEnter={(e)=> e.preventDefault()}
+        onDragEnter={(e) => e.preventDefault()}
       >
-        {board &&
-          board.tasks.map((task) => (
-            <BoardTask task={task} key={task.id} boardId={board.id} />
-          ))}
+        <TransitionGroup>
+          {board &&
+            board.tasks.map((task) => (
+              <CSSTransition key={task.id} classNames='fade' timeout={250}>
+                <BoardTask task={task} boardId={board.id} />
+              </CSSTransition>
+            ))}
+        </TransitionGroup>
       </div>
     </div>
   );

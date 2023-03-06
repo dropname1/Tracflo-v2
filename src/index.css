@@ -1,6 +1,7 @@
 :root {
   font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
   font-size: 16px;
+  overflow: hidden;
 }
 body {
   margin: 0;
@@ -125,6 +126,7 @@ body {
 .addNewWorkspace {
   padding: 0 10px;
   cursor: pointer;
+  user-select: none;
 }
 .addNewWorkspace:hover {
 background-color: #F1E9E7;
@@ -411,6 +413,7 @@ background-color: #F1E9E7;
   font-size: 20px;
   padding-left: 30px;
   margin-bottom: 10px;
+  user-select: none;
 }
 .closeInput {
   margin-top: 2px;
@@ -916,4 +919,48 @@ transition: background-color 0.3s;
 }
 #Gray-root {
   background: linear-gradient(90deg, #FBE77D, #FF79C1);
+}
+
+/* Animation Transiton-Group Classes  */
+
+/* remove - add transition  */
+
+.fade-enter {
+  opacity: 0;
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.fade-exit {
+  opacity: 0;
+}
+
+.fade-exit-active {
+  transition: opacity 250ms ease-out;
+}
+
+/* App Transition  */
+
+.fade2-enter {
+  position: absolute;
+  opacity: 0;
+}
+
+.fade2-enter-active {
+  position: absolute;
+  opacity: 1;
+  transition: opacity 250ms ease-in;
+}
+
+.fade2-exit {
+  position: absolute;
+  opacity: 0;
+}
+
+.fade2-exit-active {
+  position: absolute;
+  transition: opacity 250ms ease-out;
 }

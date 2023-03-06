@@ -40,7 +40,7 @@ const initialState = {
       appId: 2,
       boards: [
         {
-          id: 1,
+          id: 11,
           name: "Tasks",
           hasAddTask: true,
           tasks: [
@@ -50,7 +50,7 @@ const initialState = {
           ],
         },
         {
-          id: 2,
+          id: 12,
           name: "In Work",
           tasks: [
             { id: 14, title: "Leran Nux.js Board 2", boardId: 2 },
@@ -59,7 +59,7 @@ const initialState = {
           ],
         },
         {
-          id: 3,
+          id: 13,
           name: "Done",
           tasks: [
             { id: 17, title: "Leran Nux.js Board 3", boardId: 3 },
@@ -106,7 +106,7 @@ export const BoardSlice = createSlice({
 
       state.boardApps = state.boardApps.map((boardApp) => {
         if (boardApp.appId === activeApp) {
-          boardApp.boards[0].tasks.push({
+          boardApp.boards[0].tasks.unshift({
             id: Date.now(),
             title: title,
             boardId: boardApp.boards[0].id,

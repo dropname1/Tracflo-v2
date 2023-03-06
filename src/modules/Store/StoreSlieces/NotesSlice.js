@@ -87,7 +87,7 @@ export const NotesSlice = createSlice({
       }
     },
     addNote(state, noteObject) {
-      state.activeNoteApp.push({
+      state.activeNoteApp.unshift({
         id: Date.now(),
         title: noteObject.payload.note,
       });

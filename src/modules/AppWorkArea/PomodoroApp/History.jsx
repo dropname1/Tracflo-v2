@@ -4,6 +4,7 @@ import WorkItem from "./PomodoroHistoryItems/PomoWorkTime";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { removePomodoroItem } from "../../Store/StoreSlieces/PomadoroSlice";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
 
 export default function History({ activeApp }) {
   const pomodoroApps = useSelector((state) => state.PomodoroSlice.pomodoroApps);
@@ -20,11 +21,17 @@ export default function History({ activeApp }) {
   function pomodoroItem(pomodoroApp) {
     return pomodoroApp.pomodoroItems.map((item) => {
       if (item.type === "Pomadoro") {
-        return <WorkItem pomo={item} key={item.id} activeApp={activeApp} />;
+        return (
+          <CSSTransition key={item.id} classNames='fade' timeout={250}>
+            <WorkItem pomo={item} activeApp={activeApp} />
+          </CSSTransition>
+        );
       }
       if (item.type === "Relaxation") {
         return (
-          <RelaxationItem pomo={item} key={item.id} activeApp={activeApp} />
+          <CSSTransition key={item.id} classNames="fade" timeout={250}>
+            <RelaxationItem pomo={item} activeApp={activeApp} />
+          </CSSTransition>
         );
       }
     });
@@ -33,7 +40,9 @@ export default function History({ activeApp }) {
   return (
     <div className="historyWrapper">
       <div className="historyTitle">History</div>
-      <div className="historyItemsWrapper">{pomodoroApps && pomodoroApp()}</div>
+      <div className="historyItemsWrapper">
+        <TransitionGroup>{pomodoroApps && pomodoroApp()}</TransitionGroup>
+      </div>
     </div>
   );
 }
