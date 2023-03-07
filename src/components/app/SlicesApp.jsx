@@ -33,7 +33,7 @@ export default function SlicesApp({ isActiveApp }) {
             overflow: isActiveApp === "Slices" ? "initial" : "hidden",
           }}
         >
-          <ClearInput />
+          {/* <ClearInput /> */}
           <div className="GoalsAndInputWrapper">
             <AddGoal activeApp={activeProject} />
             <TransitionGroup>{goalApps.map(goalApp)}</TransitionGroup>

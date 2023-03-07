@@ -4,29 +4,22 @@ const initialState = {
   projects: [
     {
       id: 1,
-      title: "Leran JavaScript",
+      title: "Make a Youtube video",
       isSelect: false,
     },
     {
       id: 2,
-      title: "Leran React",
-      isSelect: false,
-    },
-    {
-      id: 3,
-      title: "Leran Vue",
+      title: "Leran JavaScript",
       isSelect: false,
     },
   ],
-  activeProjectId: {payload: 1},
-  activeNoteApp: {payload: 1},
-  activeTaskApp: {payload: 1},
-  activeBoardApp: {payload: 1},
-  activeSliceApp: {payload: 1},
-  activePomodoroApp: {payload: 1},
-  activeTrashApp: {payload: 1},
-
-  
+  activeProjectId: { payload: 1 },
+  activeNoteApp: { payload: 1 },
+  activeTaskApp: { payload: 1 },
+  activeBoardApp: { payload: 1 },
+  activeSliceApp: { payload: 1 },
+  activePomodoroApp: { payload: 1 },
+  activeTrashApp: { payload: 1 },
 };
 
 export const ProjectSlice = createSlice({

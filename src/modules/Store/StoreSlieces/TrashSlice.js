@@ -2,18 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   trash: [
-    {
-      id: 341,
-      title: "Leran JavaScript",
-    },
-    {
-      id: 25522,
-      title: "Leran React",
-    },
-    {
-      id: 523,
-      title: "Leran Vue",
-    },
   ],
 };
 

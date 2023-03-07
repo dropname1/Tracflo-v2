@@ -36,7 +36,7 @@ export default function TasksApp({ isActiveApp }) {
             overflow: isActiveApp === "Tasks" ? "initial" : "hidden",
           }}
         >
-          <ClearInput />
+          {/* <ClearInput /> */}
           <div className="addTaskAndTasksWrapper">
             <AddTask activeProject={activeProject} />
             <div className="TasksWrapper">

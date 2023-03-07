@@ -964,3 +964,16 @@ transition: background-color 0.3s;
   position: absolute;
   transition: opacity 250ms ease-out;
 }
+
+/* HomePage  */
+
+.homePageTitle {
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.homePageText {
+  margin-left: 100px;
+  margin-right: 100px;
+}

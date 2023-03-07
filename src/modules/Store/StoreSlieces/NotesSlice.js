@@ -7,7 +7,8 @@ const initialState = {
       notes: [
         {
           id: 1,
-          title: "This is Note QQQQQQQQQQQQQQQQQQQQQQQQQQQ",
+          title:
+            "Preparing the idea and concept: defining the theme and main idea of the video, as well as developing the plan and script. Preparation of shooting equipment: choosing a camera, microphone, lighting, tripod and other necessary equipment for shooting. Preparing the location and scenery: choosing a location for shooting, setting up scenery and background elements. Filming: Record video according to plan and scenario.",
           expanded: false,
           overflow: false,
           objectType: "Note",
@@ -16,18 +17,9 @@ const initialState = {
         {
           id: 2,
           title:
-            "Redux guide for beginers The Usage Guides section provides practical guidance on how to correctly use Redux in real-world applications,",
+            "Editing: selecting and editing the best moments from recorded materials, cutting and combining individual frames, adding sound. Creating a cover and video description: designing a unique title, creating a beautiful cover, writing a video description, and choosing search tags. Publishing and Promotion: Uploading videos to YouTube, promoting through social media and other marketing channels, interacting with viewers and responding to comments.",
           expanded: false,
           overflow: false,
-          objectType: "Note",
-        },
-
-        {
-          id: 3,
-          title:
-            "Redux guide for beginers The Usage Guides section provides practical guidance on how to correctly use Redux in real-world applications, including project setup and architecture, patterns, practices, and techniques. PREREQUISITES The pages in this category assume you understand the core Redux terms and concepts explained in including actions, reducers, stores immutability, React-Redux, and async logic.Setup and Organization​This section covers information on how to set up and organize Redux-based projects.This section provides information about typical Redux patterns and approaches for writing different kinds of Redux logic.",
-          expanded: false,
-          overflow: true,
           objectType: "Note",
         },
       ],
@@ -38,7 +30,8 @@ const initialState = {
       notes: [
         {
           id: 1,
-          title: "This is Note",
+          title:
+            "How to learn the JavaScript language from scratch: Start with the basics: Learn the fundamentals of JavaScript, such as variables, data types, operators, conditionals, and loops. This will help you understand the basic syntax of the language. Learn JavaScript in the context of HTML and CSS: Learning JavaScript directly in the context of HTML and CSS will help you better understand how web pages interact with the user. It is recommended to learn HTML and CSS along with JavaScript. Learn Libraries and Frameworks: Learning JavaScript libraries and frameworks like React, Angular, and Vue will help you build more complex apps and websites. Create your own projects: Creating your own projects will help you consolidate knowledge and practical skills. You can start with small projects, like a calculator or tic-tac-toe, and work your way up to more complex projects.",
           expanded: false,
           overflow: false,
           objectType: "Note",
@@ -47,7 +40,7 @@ const initialState = {
         {
           id: 2,
           title:
-            "Redux guide for beginers The Usage Guides section provides practical guidance on how to correctly use Redux in real-world applications,",
+            "How to Learn JavaScript from Scratch (Part 2): Take Online Courses: There are many online courses to help you learn JavaScript. Some of them are free and others are paid. Some good online courses are Codecademy, FreeCodeCamp, Udemy, Coursera. Join the community: Joining the JavaScript developer community will help you learn about the latest trends and new developments in the field. You can join groups on Facebook, LinkedIn or Reddit. Practice regularly: Practice is the key to success in learning any programming language. Try to write code every day, create new projects, participate in online courses and meetups. The more you practice, the better you become.",
           expanded: false,
           overflow: false,
           objectType: "Note",
@@ -56,7 +49,7 @@ const initialState = {
         {
           id: 3,
           title:
-            "Redux guide for beginers The Usage Guides section provides practical guidance on how to correctly use Redux in real-world applications, including project setup and architecture, patterns, practices, and techniques. PREREQUISITES The pages in this category assume you understand the core Redux terms and concepts explained in including actions, reducers, stores immutability, React-Redux, and async logic.Setup and Organization​This section covers information on how to set up and organize Redux-based projects.This section provides information about typical Redux patterns and approaches for writing different kinds of Redux logic.",
+            "The Feynman Technique is a learning method that allows you to quickly assimilate new information and better remember it. It consists of the following steps: 1. Select the topic you want to study and write it down on paper. 2. Explain this topic using simple words so that even a child can understand. 3. Use the \" flip through the pages \" technique - review the material you want to study and take notes. 4. Try to explain the topic again using your notes and simple words. 5. Test your knowledge by completing tasks or tests related to this topic.",
           expanded: false,
           overflow: true,
           objectType: "Note",

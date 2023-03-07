@@ -1,4 +1,4 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   goalApps: [
@@ -7,35 +7,20 @@ const initialState = {
       goals: [
         {
           id: 1,
-          title: "Leran Vuex State manager 1",
+          title: "Make 10 videos in 1 month",
           progress: 23,
           contextMenu: false,
           slices: [
-            { id: 1, title: "Leran Step 1", completed: true },
-            { id: 2, title: "Leran Step 2", completed: false },
-            { id: 3, title: "Leran Step 3", completed: false },
-          ],
-        },
-        {
-          id: 2,
-          title: "Leran Vuex State manager 2",
-          progress: 43,
-          contextMenu: false,
-          slices: [
-            { id: 11, title: "Leran Step 1", completed: true },
-            { id: 12, title: "Leran Step 2", completed: true },
-            { id: 13, title: "Leran Step 3", completed: true },
-          ],
-        },
-        {
-          id: 3,
-          title: "Leran Vuex State manager 3",
-          progress: 63,
-          contextMenu: false,
-          slices: [
-            { id: 111, title: "Leran Step 1", completed: false },
-            { id: 112, title: "Leran Step 2", completed: false },
-            { id: 113, title: "Leran Step 3", completed: false },
+            { id: 1, title: "Shoot the first video", completed: true },
+            { id: 2, title: "Shoot a second video", completed: true },
+            { id: 3, title: "Shoot a third video", completed: false },
+            { id: 4, title: "Shoot fourth video", completed: false },
+            { id: 5, title: "Shoot the fifth video", completed: false },
+            { id: 6, title: "Shoot the sixth video", completed: false },
+            { id: 7, title: "Shoot the seventh video", completed: false },
+            { id: 8, title: "Shoot the eighth video", completed: false },
+            { id: 9, title: "Shoot the ninth video", completed: false },
+            { id: 10, title: "Shoot the tenth video", completed: false },
           ],
         },
       ],
@@ -45,73 +30,19 @@ const initialState = {
       goals: [
         {
           id: 11123,
-          title: "Leran Vuex State manager 2222222",
+          title: "Learn JavaScript in 3 Months",
           progress: 23,
           contextMenu: false,
           slices: [
-            { id: 1, title: "Leran Step 1 project 2", completed: false },
-            { id: 2, title: "Leran Step 2", completed: false },
-            { id: 3, title: "Leran Step 3", completed: false },
-          ],
-        },
-        {
-          id: 2,
-          title: "Leran Vuex State manager",
-          progress: 23,
-          contextMenu: false,
-          slices: [
-            { id: 11, title: "Leran Step 1", completed: false },
-            { id: 12, title: "Leran Step 2", completed: false },
-            { id: 13, title: "Leran Step 3", completed: false },
-          ],
-        },
-        {
-          id: 3525,
-          title: "Leran Vuex State manager",
-          progress: 23,
-          contextMenu: false,
-          slices: [
-            { id: 111, title: "Leran Step 1", completed: false },
-            { id: 112, title: "Leran Step 2", completed: false },
-            { id: 113, title: "Leran Step 3", completed: false },
-          ],
-        },
-      ],
-    },
-    {
-      appId: 3,
-      goals: [
-        {
-          id: 12525,
-          title: "Leran Vuex State manager 3333333333",
-          progress: 23,
-          contextMenu: false,
-          slices: [
-            { id: 1, title: "Leran Step 1 project 3", completed: false },
-            { id: 2, title: "Leran Step 2", completed: false },
-            { id: 3, title: "Leran Step 3", completed: false },
-          ],
-        },
-        {
-          id: 225,
-          title: "Leran Vuex State manager",
-          progress: 23,
-          contextMenu: false,
-          slices: [
-            { id: 1, title: "Leran Step 1", completed: false },
-            { id: 2, title: "Leran Step 2", completed: false },
-            { id: 3, title: "Leran Step 3", completed: false },
-          ],
-        },
-        {
-          id: 314,
-          title: "Leran Vuex State manager",
-          progress: 23,
-          contextMenu: false,
-          slices: [
-            { id: 1, title: "Leran Step 1", completed: false },
-            { id: 2, title: "Leran Step 2", completed: false },
-            { id: 3, title: "Leran Step 3", completed: false },
+            {
+              id: 1,
+              title: "Learn the basics of the language",
+              completed: true,
+            },
+            { id: 2, title: "Solve 10 problems", completed: false },
+            { id: 3, title: "Make a simple web application", completed: false },
+            { id: 4, title: "Learn advanced js topics", completed: false },
+            { id: 5, title: "take a knowledge test", completed: false },
           ],
         },
       ],

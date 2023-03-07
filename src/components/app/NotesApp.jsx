@@ -14,7 +14,6 @@ export default function NotesApp({isActiveApp}) {
   const activeProject = useSelector(state => state.ProjectSlice.activeProjectId.payload)
   const dispath = useDispatch()
 
-
     useEffect(()=> {
       dispath(setActiveNoteApp(activeProject))
     })
@@ -46,7 +45,7 @@ export default function NotesApp({isActiveApp}) {
             overflow: isActiveApp === "Notes" ? "initial" : "hidden",
           }}
         >
-          <ClearInput />
+          {/* <ClearInput /> */}
           <div className="inputAndNotesWrapper">
             <AddNote activeProject={activeProject} />
             <div className="notesWrapper">
